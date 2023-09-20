@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-clash)"],
+        montserrat: ["Montserrat"],
+        unica_one: ["Unica_One"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

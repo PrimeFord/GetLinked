@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  background: #150e28;
+  color: #fff;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  /* background: #150e28; */
+  border-radius: 10px;
+}
+/* .clone {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 7px;
+  width: 100%;
+  border: solid 2px #cb1829;
+  border-color: #cb1829 transparent transparent transparent;
+  border-radius: 50%;
+} */
+::-webkit-scrollbar-thumb {
+  background: #903aff;
+  border-left: 0.5px solid #903aff;
+  border-right: 0.5px solid #903aff;
+  border-radius: 10px;
+}
+
 /* 
 :root {
   --foreground-rgb: 0, 0, 0;

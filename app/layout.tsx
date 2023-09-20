@@ -1,9 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
+import { Montserrat, Unica_One } from "next/font/google";
 import localFont from "@next/font/local";
 
-// const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
+const unica_one = Unica_One({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+});
 const clash = localFont({
   src: [
     {

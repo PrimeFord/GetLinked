@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 
-const RegisterButton = () => {
+const ReadMore = () => {
   return (
     <div>
       <button className="w-[10rem] h-[3rem] rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF]">
-        Register
+        Read more
       </button>
     </div>
   );
 };
 
-export default RegisterButton;
+export default ReadMore;
