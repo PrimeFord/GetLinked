@@ -3,11 +3,15 @@ import type { Metadata } from "next";
 import { Montserrat, Unica_One } from "next/font/google";
 import localFont from "@next/font/local";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 const unica_one = Unica_One({
   weight: ["400"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-unica_one",
 });
 const clash = localFont({
   src: [
@@ -39,7 +43,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${clash.variable} font-sans`}>{children}</body>
+      <body
+        className={`${clash.variable} ${montserrat.variable} ${unica_one.variable} font-sans`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
