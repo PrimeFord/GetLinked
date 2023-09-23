@@ -4,6 +4,9 @@ import RegisterButton from "../Components/RegisterButton";
 import ReadMore from "../Components/ReadMore";
 import Flare from "../Components/Flare";
 import Sun from "../Components/Sun";
+import Starp from "../Components/Starp";
+import Starw from "../Components/Starw";
+import Starg from "../Components/Starg";
 
 const Overview = () => {
   const [isClient, setIsClient] = useState(false);
@@ -51,6 +54,40 @@ const Overview = () => {
               className={
                 "left-[65rem] hidden lg:flex top-[20rem] h-[20rem] z-10"
               }
+            />
+            <Starp
+              className={
+                "top-[3rem] left-[7rem] lg:top-[12rem] lg:left-[25rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[35rem] right-[3rem] lg:top-[35rem] lg:right-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starp
+              className={"top-[3rem] left-[2rem] lg:top-[3rem] lg:left-[10rem]"}
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[65rem] right-[3rem] lg:top-[40rem] lg:right-[20rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starg
+              className={
+                "bottom-[12rem] left-[3rem] lg:bottom-[18rem] lg:left-[39rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starg
+              className={
+                "bottom-[1rem] left-[1rem] lg:bottom-[8rem] lg:left-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
             />
             <div className="w-[100%]">
               <p className="relative flex justify-end font-montserrat lg:text-[2rem] font-[700] italic mb-8">
@@ -162,6 +199,23 @@ const Overview = () => {
                 "left-[14rem] top-[24rem] lg:left-[72rem] lg:top-[23rem]"
               }
             />
+            <Starp
+              className={"top-[3rem] left-[2rem] lg:top-[3rem] lg:left-[10rem]"}
+              aspect={"h-4 lg:h-6"}
+            />
+
+            <Starg
+              className={
+                "bottom-[1rem] left-[1rem] lg:bottom-[8rem] lg:left-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starg
+              className={
+                "bottom-[12rem] left-[3rem] lg:bottom-[18rem] lg:left-[39rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
             <div className="h-fit lg:w-[45%] text-center lg:text-left">
               <p className="text-[1.2rem] lg:text-[2rem] font-[700] lg:leading-6">
                 Rules and
@@ -197,6 +251,24 @@ const Overview = () => {
               }
             />
             <Flare className={"lg:left-[70rem] lg:top-[45rem]"} />
+            <Starw
+              className={
+                "top-[65rem] right-[3rem] lg:top-[40rem] lg:right-[20rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starp
+              className={
+                "top-[8rem] left-[5rem] lg:top-[12rem] lg:left-[25rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[35rem] right-[3rem] lg:top-[35rem] lg:right-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
             <div className="h-[100%] lg:w-[50%] flex items-center">
               <img
                 src="/images/criteria.png"
@@ -264,6 +336,24 @@ const Overview = () => {
               className={
                 "lg:right-[0rem] left-[12rem] h-[6rem] w-[6rem] top-[27rem] lg:top-[38rem]"
               }
+            />
+            <Starp
+              className={
+                "top-[8rem] left-[5rem] lg:top-[12rem] lg:left-[25rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[35rem] right-[3rem] lg:top-[35rem] lg:right-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starg
+              className={
+                "bottom-[1rem] left-[1rem] lg:bottom-[8rem] lg:left-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
             />
             <div className="h-[100%] lg:w-[40%] flex items-center">
               <img
@@ -348,6 +438,23 @@ const Overview = () => {
                 "left-[15rem] h-[6rem] w-[6rem] top-[15rem] lg:left-[70rem] lg:top-[35rem] z-[10]"
               }
             />
+            <Starp
+              className={
+                "top-[8rem] left-[5rem] lg:top-[12rem] lg:left-[25rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starp
+              className={"top-[3rem] left-[2rem] lg:top-[3rem] lg:left-[10rem]"}
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[65rem] right-[3rem] lg:top-[40rem] lg:right-[20rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+
             <div className="h-fit lg:w-[45%] mx-auto text-center">
               <p className="text-[1.2rem] lg:text-[2rem] font-[700]">
                 Partners an Sponsors
@@ -357,26 +464,26 @@ const Overview = () => {
                 companies as its partners and sponsors
               </p>
             </div>
-            <div className="w-[100%] lg:mt-[5rem] mt-[3rem] h-[9rem] lg:h-[30rem] flex justify-center items-center border border-[#D434FE] rounded-md text-center">
+            <div className="w-[100%] lg:mt-[5rem] mt-[3rem] h-[12rem] lg:h-[30rem] flex justify-center items-center border border-[#D434FE] rounded-md text-center">
               <div className="relative w-[11.9rem] lg:w-[39rem] flex flex-wrap justify-center  lg:justify-around ">
-                <div className="absolute w-[1.5rem] h-[1rem] top-[2.5rem] left-[3.7rem] lg:w-[4rem] lg:h-[2rem] rounded-[50%] bg-[#150e28] lg:top-[7rem] lg:left-[11rem]"></div>
-                <div className="absolute w-[1.5rem] h-[1rem] top-[2.5rem] left-[6.7rem] lg:w-[4rem] lg:h-[2rem] rounded-[50%] bg-[#150e28] lg:top-[7rem] lg:left-[24rem]"></div>
-                <div className="w-[3rem] lg:w-[13rem] p-[0.75rem] h-[3rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-b-[1px] ">
+                <div className="absolute w-[1.5rem] h-[1rem] top-[3.5rem] left-[3.7rem] lg:w-[4rem] lg:h-[2rem] rounded-[50%] bg-[#150e28] lg:top-[7rem] lg:left-[11rem]"></div>
+                <div className="absolute w-[1.5rem] h-[1rem] top-[3.5rem] left-[6.7rem] lg:w-[4rem] lg:h-[2rem] rounded-[50%] bg-[#150e28] lg:top-[7rem] lg:left-[24rem]"></div>
+                <div className="w-[3rem] lg:w-[13rem] p-[0.5rem] h-[4rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-b-[1px] ">
                   <img src="/images/liberty.png" alt="liberty" />
                 </div>
-                <div className="w-[3rem] p-[0.25rem] h-[3rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-[1px] border-t-0">
+                <div className="w-[3rem] p-[0.2rem] h-[4rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-[1px] border-t-0">
                   <img src="/images/libertypay.png" alt="libertypay" />
                 </div>
-                <div className="w-[3rem] p-[0.75rem] h-[3rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-b-[1px] border-l-[1px]">
+                <div className="w-[3rem] p-[0.5rem] h-[4rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-b-[1px] border-l-[1px]">
                   <img src="/images/winwise.png" alt="winwise" />
                 </div>
-                <div className="w-[3rem] p-[0.75rem] h-[3rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-t-[1px]">
+                <div className="w-[3rem] p-[0.5rem] h-[4rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-t-[1px]">
                   <img src="/images/wisperwhite.png" alt="wisperwhite" />
                 </div>
-                <div className="w-[3rem] p-[0.25rem] h-[3rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-t-[1px] border-l-[1px]">
+                <div className="w-[3rem] p-[0.2rem] h-[4rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-r-[1px] border-t-[1px] border-l-[1px]">
                   <img src="/images/paybox.png" alt="paybox" />
                 </div>
-                <div className="w-[3rem] p-[0.25rem] h-[3rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-t-[1px] border-l-[1px]">
+                <div className="w-[3rem] p-[0.2rem] h-[4rem] lg:w-[13rem] lg:p-[3rem] lg:h-[8rem] flex justify-center items-center border-[#D434FE] border-t-[1px] border-l-[1px]">
                   <img src="/images/vuzualplus.png" alt="vuzualplus" />
                 </div>
               </div>
@@ -384,6 +491,24 @@ const Overview = () => {
           </div>
           <div className="h-fit px-[1rem] lg:px-[8rem] py-[2rem] lg:pt-[8rem] lg:pb-[8rem] relative border-b-2 border-solid border-[#FFFFFF2E] flex flex-col lg:flex-row items-end justify-between">
             <Flare className={"left-[5rem] top-[50rem]"} />
+            <Starg
+              className={
+                "bottom-[12rem] left-[3rem] lg:bottom-[18rem] lg:left-[39rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starw
+              className={
+                "top-[35rem] right-[3rem] lg:top-[35rem] lg:right-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
+            <Starg
+              className={
+                "bottom-[1rem] left-[1rem] lg:bottom-[8rem] lg:left-[15rem]"
+              }
+              aspect={"h-4 lg:h-6"}
+            />
             <div className="h-fit text-center lg:text-left px-4 lg:w-[45%]">
               <p className="text-[1.2rem] lg:text-[2rem] font-[700] lg:leading-6">
                 Privacy Policy and

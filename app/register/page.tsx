@@ -39,8 +39,8 @@ const Register = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    () => setShowModal(true);
     try {
+      setShowModal(true);
       const url = `${base}/hackathon/registration`;
       const data: {
         email: string;
@@ -61,7 +61,8 @@ const Register = () => {
       };
       const config: any = { "content-type": "application/json" };
       const response = await axios.post(url, data, config);
-      console.log(data);
+      console.log(response.data);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -70,6 +71,7 @@ const Register = () => {
   useEffect(() => {
     getCategory();
   }, []);
+
   return (
     <div className="h-fit lg:h-[100vh] px-[2rem] lg:px-[8rem] relative flex items-center justify-center">
       <RegisterModal
@@ -144,7 +146,10 @@ const Register = () => {
             <p className="text-[1rem] lg:hidden lg:text-[1.2rem] font-[400] mb-4">
               CREATE YOUR ACCOUNT
             </p>
-            <form className="w-[100%] forms grid grid-cols-2 gap-x-4">
+            <form
+              onSubmit={handleSubmit}
+              className="w-[100%] forms grid grid-cols-2 gap-x-4"
+            >
               <section className="mb-4 col-span-2 lg:col-span-1">
                 <label htmlFor="team_name">Team's Name</label>
                 <input
@@ -249,6 +254,10 @@ const Register = () => {
                   type="checkbox"
                   name="terms_agreement"
                   id="terms_agreement"
+                  onChange={(e: any) => {
+                    setCheck(e.target.value);
+                    getCategory();
+                  }}
                 />
                 I agreed with the event terms and conditions and privacy policy
               </section>
@@ -257,7 +266,7 @@ const Register = () => {
                   type="submit"
                   className="w-[100%] h-[3rem] mt-4 rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF] 
                   hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem]"
-                  onSubmit={handleSubmit}
+                  onClick={handleSubmit}
                 >
                   Register Now
                 </button>
