@@ -1,21 +1,65 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Socials from "../Components/Socials";
 import Flare from "../Components/Flare";
 import Starp from "../Components/Starp";
 import Starw from "../Components/Starw";
 import Starg from "../Components/Starg";
-import NavBar from "../Components/NavBar";
 import RegisterButton from "../Components/RegisterButton";
 import { navInfo } from "../Utility/data";
 import Link from "next/link";
 import Logo from "../Components/Logo";
+import axios from "axios";
+import RegisterModal from "../Components/RegisterModal";
 
 const Contact = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  let base = "https://backend.getlinked.ai";
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const url = `${base}/hackathon/contact-form`;
+      const data: {
+        email: string;
+        phone_number: string;
+        first_name: string;
+        message: string;
+      } = {
+        email: email,
+        phone_number: phone,
+        first_name: name,
+        message: message,
+      };
+      const config: any = { "content-type": "application/json" };
+      const response = await axios.post(url, data, config);
+      console.log(response.data);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("sucessful");
+      setShowModal(true);
+    }
+  };
+
+  useEffect(() => {
+    handleSubmit;
+  }, []);
   return (
     <div className="h-fit px-[2rem] lg:px-[10rem] lg:pt-[7rem] lg:pb-[1rem] relative flex items-center justify-center">
+      <RegisterModal
+        class={"hidden"}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      />
       <nav
         className={`h-[4.5rem] lg:h-[7rem] fixed top-0 lg:pt-[1.5rem] w-[100%] px-[2rem] lg:px-[8rem] hidden lg:flex lg:items-center lg:justify-between z-30 `}
       >
@@ -82,14 +126,36 @@ const Contact = () => {
             <p className="text-[1.1rem] lg:text-[1.2rem] font-[700] text-[#D434FE] mb-4">
               Let us know about it!
             </p>
-            <form className="w-[100%] text-[0.85rem] lg:text-[0.95rem] flex flex-col gap-6 text-[#fff]">
+            <form
+              onSubmit={handleSubmit}
+              className="w-[100%] text-[0.85rem] lg:text-[0.95rem] flex flex-col gap-6 text-[#fff]"
+            >
               <section>
                 <input
                   className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
                   type="text"
                   name="firstname"
                   id="first_name"
+                  value={name}
+                  onChange={(e: any) => {
+                    setName(e.target.value);
+                  }}
                   placeholder="Firstname"
+                />
+              </section>
+              <section className="mb-4 col-span-2 lg:col-span-1">
+                <label htmlFor="phone_no">Phone</label>
+                <input
+                  className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
+                  type="text"
+                  name="phone_no"
+                  id="phone_no"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                  placeholder="Enter your phone number"
+                  required
                 />
               </section>
               <section>
@@ -98,6 +164,10 @@ const Contact = () => {
                   type="email"
                   name="email"
                   id="email"
+                  value={email}
+                  onChange={(e: any) => {
+                    setEmail(e.target.value);
+                  }}
                   placeholder="Mail"
                 />
               </section>
@@ -106,6 +176,10 @@ const Contact = () => {
                   className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
                   name="message"
                   id="message"
+                  value={message}
+                  onChange={(e: any) => {
+                    setMessage(e.target.value);
+                  }}
                   rows={5}
                   placeholder="Message..."
                 ></textarea>
@@ -114,6 +188,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   className="w-[8rem] lg:w-[10rem] h-[3rem] rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF] hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem]"
+                  onClick={handleSubmit}
                 >
                   Submit
                 </button>

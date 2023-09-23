@@ -40,7 +40,6 @@ const Register = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      setShowModal(true);
       const url = `${base}/hackathon/registration`;
       const data: {
         email: string;
@@ -65,11 +64,14 @@ const Register = () => {
       console.log(response);
     } catch (error) {
       console.error(error);
+    } finally {
+      setShowModal(true);
     }
   };
 
   useEffect(() => {
     getCategory();
+    handleSubmit;
   }, []);
 
   return (

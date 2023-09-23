@@ -20,13 +20,17 @@ const RegisterModal = (props: any) => {
             alt="congratulation"
           />
         </div>
-        <h2 className="text-[1.5rem] lg:text-[1.25rem] mb-[-1rem]">
+        <h2
+          className={`text-[1.5rem] lg:text-[1.25rem] mb-[-1rem] ${props.class}`}
+        >
           Congratulations
         </h2>
-        <h2 className="text-[1.5rem] lg:text-[1.25rem] ">
+        <h2 className={`text-[1.5rem] lg:text-[1.25rem] ${props.class}`}>
           you have successfully Registered!{" "}
         </h2>
-        <p className="lg:w-[50%] text-[0.85rem] lg:text-[0.85rem]">
+        <p
+          className={`lg:w-[50%] text-[0.85rem] lg:text-[0.85rem] ${props.class}`}
+        >
           Yes, it was easy and you did it! check your mail box for next step
         </p>
         <button
