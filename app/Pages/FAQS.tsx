@@ -1,13 +1,13 @@
 import React from "react";
-import Starp from "../Components/Starp";
-import Starw from "../Components/Starw";
-import Starg from "../Components/Starg";
+import Starp from "../Components/Effects/Starp";
+import Starw from "../Components/Effects/Starw";
+import Starg from "../Components/Effects/Starg";
 
 const FAQS = () => {
   return (
     <div
       id="faqs"
-      className="h-fit px-[2rem] py-[2rem] lg:pl-[12rem] lg:pr-[8rem] lg:pt-[6rem] lg:pb-[4rem] relative border-b-2 border-solid border-[#FFFFFF2E] flex flex-col lg:flex-row items-center justify-between"
+      className="min-h-fit px-[2rem] py-[2rem] lg:pl-[12rem] lg:pr-[8rem] lg:pt-[6rem] lg:pb-[4rem] relative border-b-2 border-solid border-[#FFFFFF2E] flex flex-col lg:flex-row items-center justify-between"
     >
       <Starp
         className={"top-[3rem] left-[2rem] lg:top-[3rem] lg:left-[10rem]"}

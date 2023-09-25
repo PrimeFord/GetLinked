@@ -1,13 +1,13 @@
 import React from "react";
-import Starg from "../Components/Starg";
-import Starp from "../Components/Starp";
-import Starw from "../Components/Starw";
+import Starg from "../Components/Effects/Starg";
+import Starp from "../Components/Effects/Starp";
+import Starw from "../Components/Effects/Starw";
 
 const Timeline = () => {
   return (
     <div
       id="timeline"
-      className="h-fit px-[2rem] py-[3rem] bg-[#150E28] lg:px-[8rem] lg:pt-[4rem] lg:pb-[5rem] relative border-b-2 border-solid border-[#FFFFFF2E] flex-col justify-between items-center"
+      className="min-h-fit px-[2rem] py-[3rem] bg-[#150E28] lg:px-[8rem] lg:pt-[4rem] lg:pb-[5rem] relative border-b-2 border-solid border-[#FFFFFF2E] flex-col justify-between items-center"
     >
       <Starp
         className={"top-[8rem] left-[5rem] lg:top-[12rem] lg:left-[25rem]"}

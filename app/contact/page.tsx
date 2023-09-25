@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Socials from "../Components/Socials";
-import Flare from "../Components/Flare";
-import Starp from "../Components/Starp";
-import Starw from "../Components/Starw";
-import Starg from "../Components/Starg";
-import RegisterButton from "../Components/RegisterButton";
+import Flare from "../Components/Effects/Flare";
+import Starp from "../Components/Effects/Starp";
+import Starw from "../Components/Effects/Starw";
+import Starg from "../Components/Effects/Starg";
+import RegisterButton from "../Components/Buttons/RegisterButton";
 import { navInfo } from "../Utility/data";
 import Link from "next/link";
-import Logo from "../Components/Logo";
+import Logo from "../Components/Logo/Logo";
 import axios from "axios";
-import RegisterModal from "../Components/RegisterModal";
+import RegisterModal from "../Components/Modals/RegisterModal";
 
 const Contact = () => {
   const router = useRouter();
@@ -20,33 +20,39 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let base = "https://backend.getlinked.ai";
+  const url = `${base}/hackathon/contact-form`;
+
+  const data: {
+    email: string;
+    phone_number: string;
+    first_name: string;
+    message: string;
+  } = {
+    email: email,
+    phone_number: phone,
+    first_name: name,
+    message: message,
+  };
+  const config: any = { "content-type": "application/json" };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      const url = `${base}/hackathon/contact-form`;
-      const data: {
-        email: string;
-        phone_number: string;
-        first_name: string;
-        message: string;
-      } = {
-        email: email,
-        phone_number: phone,
-        first_name: name,
-        message: message,
-      };
-      const config: any = { "content-type": "application/json" };
-      const response = await axios.post(url, data, config);
-      console.log(response.data);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      console.log("sucessful");
-      setShowModal(true);
+    if (name !== "" && phone !== "" && email !== "" && message !== "") {
+      setIsLoading(true);
+      try {
+        const response = await axios.post(url, data, config);
+        console.log(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        console.log("sucessful");
+        setShowModal(true);
+        setIsLoading(false);
+      }
     }
   };
 
@@ -66,7 +72,11 @@ const Contact = () => {
         <Logo />
         <div className="w-[35%] hidden lg:flex justify-around">
           {navInfo.map((e, i) => (
-            <Link className="text-[1rem] font-[400]" key={i} href={e.route}>
+            <Link
+              className="text-[1rem] font-[400] hover:text-[#D434FE]"
+              key={i}
+              href={e.route}
+            >
               {e.name}
             </Link>
           ))}
@@ -116,23 +126,23 @@ const Contact = () => {
             alt="back"
             onClick={() => router.push("/")}
           />
-          <div className="w-[100%] pt-[4rem] px-4 lg:p-[3rem] font-montserrat lg:bg-[#fff] lg:bg-opacity-5  rounded-md flex-col">
-            <p className="text-[0.9rem] flex items-end lg:hidden lg:text-[1.2rem] font-[400] mb-4">
-              Email us below to any question related to our event
-            </p>
+          <div className="w-[100%] pt-[8rem] px-4 lg:p-[3rem] font-montserrat lg:bg-[#fff] lg:bg-opacity-5 rounded-md flex-col">
             <p className="text-[1.1rem] lg:text-[1.2rem] font-[700] text-[#D434FE]">
               Questions or need assistance?
             </p>
             <p className="text-[1.1rem] lg:text-[1.2rem] font-[700] text-[#D434FE] mb-4">
               Let us know about it!
             </p>
+            <p className="text-[0.9rem] flex items-end lg:hidden lg:text-[1.2rem] font-[400] mb-4">
+              Email us below to any question related to our event
+            </p>
             <form
               onSubmit={handleSubmit}
-              className="w-[100%] text-[0.85rem] lg:text-[0.95rem] flex flex-col gap-6 text-[#fff]"
+              className="w-[100%] text-[0.85rem] lg:text-[0.95rem] flex flex-col gap-5 text-[#fff]"
             >
               <section>
                 <input
-                  className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
+                  className="w-[100%] bg-inherit border px-4 py-[0.45rem] rounded-[0.25rem]"
                   type="text"
                   name="firstname"
                   id="first_name"
@@ -141,12 +151,12 @@ const Contact = () => {
                     setName(e.target.value);
                   }}
                   placeholder="Firstname"
+                  required
                 />
               </section>
-              <section className="mb-4 col-span-2 lg:col-span-1">
-                <label htmlFor="phone_no">Phone</label>
+              <section className="col-span-2 lg:col-span-1">
                 <input
-                  className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
+                  className="w-[100%] bg-inherit border px-4 py-[0.45rem] rounded-[0.25rem]"
                   type="text"
                   name="phone_no"
                   id="phone_no"
@@ -160,7 +170,7 @@ const Contact = () => {
               </section>
               <section>
                 <input
-                  className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
+                  className="w-[100%] bg-inherit border px-4 py-[0.45rem] rounded-[0.25rem]"
                   type="email"
                   name="email"
                   id="email"
@@ -169,11 +179,12 @@ const Contact = () => {
                     setEmail(e.target.value);
                   }}
                   placeholder="Mail"
+                  required
                 />
               </section>
               <section className="">
                 <textarea
-                  className="w-[100%] bg-inherit border px-4 py-[0.5rem] rounded-[0.25rem]"
+                  className="w-[100%] bg-inherit border px-4 py-[0.45rem] rounded-[0.25rem]"
                   name="message"
                   id="message"
                   value={message}
@@ -182,15 +193,24 @@ const Contact = () => {
                   }}
                   rows={5}
                   placeholder="Message..."
+                  required
                 ></textarea>
               </section>
               <section className="w-[100%] flex justify-center">
                 <button
                   type="submit"
-                  className="w-[8rem] lg:w-[10rem] h-[3rem] rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF] hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem]"
+                  className="w-[8rem] lg:w-[10rem] flex items-center justify-center h-[3rem] rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF] hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem]"
                   onClick={handleSubmit}
+                  disabled={isLoading}
                 >
-                  Submit
+                  {isLoading ? (
+                    <svg
+                      className="animate-spin border-[3px] w-[1.5rem] h-[1.5rem] rounded-[50%] border-t-[#D434FE] "
+                      viewBox="0 0 24 24"
+                    ></svg>
+                  ) : (
+                    "Submit"
+                  )}
                 </button>
               </section>
             </form>

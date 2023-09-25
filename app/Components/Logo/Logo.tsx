@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div>
       <Link
-        href={"#"}
+        href={"/"}
         className="w-[30%] text-[1.2rem] lg:text-[2.25rem] font-[700]"
       >
         get

@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { navInfo } from "../Utility/data";
-import RegisterButton from "./RegisterButton";
-import Logo from "./Logo";
+import { navInfo } from "../../Utility/data";
+import RegisterButton from "../Buttons/RegisterButton";
+import Logo from "../Logo/Logo";
 
 const NavBar = (props: any) => {
   const [navbar, setNavbar] = useState(false);
@@ -11,7 +11,7 @@ const NavBar = (props: any) => {
   if (typeof window !== "undefined") {
     let prev = window.scrollY;
     const navBg = () => {
-      if (window.scrollY >= 75) {
+      if (window.scrollY >= 85) {
         setNavbar(true);
       } else {
         setNavbar(false);
@@ -50,7 +50,11 @@ const NavBar = (props: any) => {
       <Logo />
       <div className="w-[35%] hidden lg:flex justify-around">
         {navInfo.map((e, i) => (
-          <Link className="text-[1rem] font-[400]" key={i} href={e.route}>
+          <Link
+            className="text-[1rem] font-[400] hover:text-[#D434FE]"
+            key={i}
+            href={e.route}
+          >
             {e.name}
           </Link>
         ))}

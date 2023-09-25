@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "../Components/Logo";
+import Logo from "../Logo/Logo";
 import Link from "next/link";
-import Socials from "./Socials";
+import Socials from "../Socials";
 
 const Footer = () => {
   return (
-    <footer className="justify-between h-fit bg-[#100B20] px-[3.5rem] lg:px-[8rem] py-[3rem] lg:pt-[5rem] lg:pb-[2rem] relative">
+    <footer className="justify-between min-h-fit bg-[#100B20] px-[3.5rem] lg:px-[8rem] py-[3rem] lg:pt-[5rem] lg:pb-[2rem] relative">
       <div className="font-montserrat flex flex-col lg:flex-row justify-between mb-6 text-[0.85rem]">
         <div className="lg:w-[35%]">
           <div className="">

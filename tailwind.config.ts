@@ -19,9 +19,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       keyframes: {
-        swing: {
-          "0%": { width: "0rem" },
-          "100%": { width: "4rem" },
+        fadeup: {
+          "0%,50%": { opacity: "0", transform: "translateY(100%)" },
+          "60%,100%": { opacity: "1", transform: "translateY(100%)" },
         },
         under: {
           "0%": { width: "0rem" },
@@ -29,7 +29,7 @@ const config: Config = {
         },
       },
       animation: {
-        swing: "swing 3s ease-in-out infinite",
+        fadeup: "swing 1s ease-in-out finite",
         under: "swing 3s ease-in-out infinite",
       },
     },

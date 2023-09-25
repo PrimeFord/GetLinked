@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Logo from "../Components/Logo";
+import Logo from "../Components/Logo/Logo";
 import { navInfo } from "../Utility/data";
 import Link from "next/link";
-import RegisterButton from "../Components/RegisterButton";
+import RegisterButton from "../Components/Buttons/RegisterButton";
 import { useRouter } from "next/navigation";
-import Starg from "../Components/Starg";
-import Starw from "../Components/Starw";
-import Starp from "../Components/Starp";
-import Flare from "../Components/Flare";
-import RegisterModal from "../Components/RegisterModal";
+import Starg from "../Components/Effects/Starg";
+import Starw from "../Components/Effects/Starw";
+import Starp from "../Components/Effects/Starp";
+import Flare from "../Components/Effects/Flare";
+import RegisterModal from "../Components/Modals/RegisterModal";
 import axios from "axios";
 
 const Register = () => {
@@ -23,6 +23,7 @@ const Register = () => {
   const [cartegory, setCartegory] = useState(0);
   const [size, setSize] = useState(0);
   const [check, setCheck] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let base = "https://backend.getlinked.ai";
 
@@ -37,35 +38,47 @@ const Register = () => {
     }
   };
 
+  const url = `${base}/hackathon/registration`;
+  const data: {
+    email: string;
+    phone_number: string;
+    team_name: string;
+    group_size: number;
+    project_topic: string;
+    category: number;
+    privacy_poclicy_accepted: boolean;
+  } = {
+    email: email,
+    phone_number: phone,
+    team_name: team,
+    group_size: size,
+    project_topic: topic,
+    category: cartegory,
+    privacy_poclicy_accepted: check,
+  };
+  const config: any = { "content-type": "application/json" };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      const url = `${base}/hackathon/registration`;
-      const data: {
-        email: string;
-        phone_number: string;
-        team_name: string;
-        group_size: number;
-        project_topic: string;
-        category: number;
-        privacy_poclicy_accepted: boolean;
-      } = {
-        email: email,
-        phone_number: phone,
-        team_name: team,
-        group_size: size,
-        project_topic: topic,
-        category: cartegory,
-        privacy_poclicy_accepted: check,
-      };
-      const config: any = { "content-type": "application/json" };
-      const response = await axios.post(url, data, config);
-      console.log(response.data);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setShowModal(true);
+    if (
+      team !== "" &&
+      topic !== "" &&
+      phone !== "" &&
+      size > 0 &&
+      cartegory > 0 &&
+      email !== "" &&
+      check !== true
+    ) {
+      setIsLoading(true);
+      try {
+        const response = await axios.post(url, data, config);
+        console.log(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setShowModal(true);
+        setIsLoading(false);
+      }
     }
   };
 
@@ -103,7 +116,11 @@ const Register = () => {
         <Logo />
         <div className="w-[35%] hidden lg:flex justify-around">
           {navInfo.map((e, i) => (
-            <Link className="text-[1rem] font-[400]" key={i} href={e.route}>
+            <Link
+              className="text-[1rem] font-[400] hover:text-[#D434FE]"
+              key={i}
+              href={e.route}
+            >
               {e.name}
             </Link>
           ))}
@@ -112,7 +129,7 @@ const Register = () => {
           <RegisterButton />
         </div>
       </nav>
-      <div className="w-[100%] py-[2.5rem] lg:mt-8 lg:pt-[2rem] relative flex flex-col lg:flex-row items-center">
+      <div className="w-[100%] pt-[2.5rem] lg:mt-[3rem] lg:pt-[2rem] relative flex flex-col lg:flex-row items-center">
         <img
           className="h-8 absolute flex lg:hidden top-18 left-0"
           src="/images/back.png"
@@ -267,10 +284,18 @@ const Register = () => {
                 <button
                   type="submit"
                   className="w-[100%] h-[3rem] mt-4 rounded-[0.25rem] bg-gradient-to-r from-[#D434FE] to-[#903AFF] 
-                  hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem]"
+                  hover:border hover:border-[#903AFF] hover:bg-clip-text hover:text-transparent hover:border-6 hover:text-[1.1rem] flex justify-center items-center"
                   onClick={handleSubmit}
+                  disabled={isLoading}
                 >
-                  Register Now
+                  {isLoading ? (
+                    <svg
+                      className="animate-spin border-[3px] w-[1.5rem] h-[1.5rem] rounded-[50%] border-t-[#D434FE] "
+                      viewBox="0 0 24 24"
+                    ></svg>
+                  ) : (
+                    "Register Now"
+                  )}
                 </button>
               </section>
             </form>
